@@ -10,16 +10,21 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "cypress": "^4.7.0",
+    "cypress-react-unit-test": "^4.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "report": "npx nyc report --reporter=text-summary",
+    "cy": "npx cypress open",
+    "cy2": "npx cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +40,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.7.6",
+    "@cypress/instrument-cra": "^1.1.1"
+  },
+  "nyc": {
+    "exclude": "src/serviceWorker.js"
   }
 }
